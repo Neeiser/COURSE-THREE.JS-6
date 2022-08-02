@@ -1,6 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
-/* import gsap from 'gsap' */
+import gsap from 'gsap'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -35,13 +35,20 @@ renderer.setSize(sizes.width, sizes.height)
 
 // Animation
 
-let time = Date.now() //Per normalizzare il framerate con il metodo del tempo
+//Animazione attraverso GSAP.
+
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 })
+gsap.to(mesh.position, { duration: 1, delay: 2, x: 0 }) // Faccio tornare il cubo alla posizione originale
+
+// let time = Date.now() //Per normalizzare il framerate con il metodo del tempo
 
 //Metodo Clock
-const clock = new THREE.Clock()
+
+// const clock = new THREE.Clock()
 
 const tick = () =>
 {
+    /* 
     const currentTime = Date.now()
     const deltaTime = currentTime - time
     time = currentTime
@@ -58,7 +65,8 @@ const tick = () =>
 
     // Effetto seno/coseno, va su e torna giù di continuo, a LOOP.
     mesh.position.x = Math.sin(elapsedTime)
-    mesh.position.y = Math.cos(elapsedTime)
+    mesh.position.y = Math.cos(elapsedTime) 
+    */
     
 
     //Renderizzare ad ogni tick
